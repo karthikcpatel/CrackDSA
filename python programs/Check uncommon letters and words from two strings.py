@@ -1,37 +1,20 @@
-def UncommonWords(A, B):
-    A = A.split()
-    B = B.split()
-    x = []
-    for i in A:
-        if i not in B:
-            x.append(i)
-    for i in B:
-        if i not in A:
-            x.append(i)
-    x = list(set(x))
-    return x
+def uncommon_elements(list1, list2):
+    """
+    Returns elements that are present in one list but not the other.
+    """
+    result = []
+    for i in list1:
+        if i not in list2:
+            result.append(i)
+    for i in list2:
+        if i not in list1:
+            result.append(i)
+    # Optional: remove duplicates if needed
+    return list(set(result))
 
 
 # Driver Code
-A = "Geeks for Geeks"
-B = "Learning from Geeks for Geeks"
+list1 = ["Kartik", "Chetan", "Patel"]
+list2 = ["Kartik", "Chetankumar", "Patel"]
 
-# Print required answer
-print(UncommonWords(A, B))
-
-
-print("*************** Second Approach ***************")
-
-
-list1 = ["Kartik","Chetan","Patel"]
-list2 = ["Kartik","Chetankumar","Patel"]
-
-emp_list = []
-
-for i in list1:
-    if i not in list2:
-        emp_list.append(i)
-for i in list2:
-    if i not in list1:
-        emp_list.append(i)
-print(emp_list)
+print(uncommon_elements(list1, list2))

@@ -1,16 +1,19 @@
-# The map() function executes a specified function for each item in an iterable.
-# The item is sent to the function as a parameter.
+def average_word_length(sentence):
+    words = sentence.split()
+    total_length = 0
 
-sentence1 = "Karti&*k #Pate,l"
-sentence2 = "I need to work very hard to learn more about algorithms in Python!"
+    for word in words:
+        word_length = len(word)
+        total_length = total_length + word_length
 
-def solution(sentence):
-    for p in "!?',;.&*#":
-        sentence = sentence.replace(p, '')
-    words = sentence.split(" ")
-    print(len(words))
-    avg_word = sum(map(len, words)) / len(words)
-    print (avg_word)
+    if len(words) == 0:
+        return 0
 
-solution(sentence1)
-solution(sentence2)
+    return total_length / len(words)
+
+
+# Example usage
+text = "I love Python programming"
+avg_length = average_word_length(text)
+
+print("Average word length:", avg_length)

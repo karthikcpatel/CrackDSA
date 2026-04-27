@@ -1,17 +1,26 @@
-# This logic needs to be modified
-str1 = "Kartik"
-str2 = "Googlek"
-set_str1 = set(str1)
-set_str2 = set(str2)
-common_letters = set_str1 & set_str2
-print("The common letters are: ", common_letters)
+def common_letters_and_words(str1, str2):
+    # Convert to lowercase for case-insensitive comparison
+    str1 = str1.lower()
+    str2 = str2.lower()
 
-str1 = "my name is Kartik my"
-str2 = "my company is Google"
-str1_words = set(str1.split(" "))
-print(str1_words)
-str2_words = set(str2.split(" "))
-print(str2_words)
+    # --- Common Letters ---
+    letters1 = set(str1.replace(" ", ""))
+    letters2 = set(str2.replace(" ", ""))
+    common_letters = letters1.intersection(letters2)
 
-common_words = (str1_words)&(str2_words)
-print("The common words in string are: ",common_words)
+    # --- Common Words ---
+    words1 = set(str1.split())
+    words2 = set(str2.split())
+    common_words = words1.intersection(words2)
+
+    return common_letters, common_words
+
+
+# Example usage
+s1 = "I love Python programming"
+s2 = "Python is love and fun"
+
+letters, words = common_letters_and_words(s1, s2)
+
+print("Common Letters:", letters)
+print("Common Words:", words)
