@@ -11,7 +11,6 @@ def average_word_length(sentence):
 
     return total_length / len(words)
 
-
 # Example usage
 text = "I love Python programming"
 avg_length = average_word_length(text)

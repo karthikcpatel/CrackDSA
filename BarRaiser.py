@@ -15,5 +15,5 @@ def run_length_encoding(string):
     return new_string
 
 # Usage:
-result = run_length_encoding("aabbccdaae")
+# result = run_length_encoding("aabbccdaae")
 print(result)
