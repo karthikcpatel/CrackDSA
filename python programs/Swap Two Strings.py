@@ -1,25 +1,15 @@
-# str1 = "Kartik";
-# str2 = "Patel";
-# print("Strings before swapping: " +str1+ " " +str2)
-# str1 = str1 + str2 #KartikPatel
-# str2 = str1[0: (len(str1) - len(str2))] #11-5=6
-# print("The value of str2 is: "+str2)
-# str1 = str1[len(str2):]
-# print("The value of str1 is: " +str1)
-# print("Strings after swapping: " +str1+ " " +str2)
+class SwapStrings:
 
+    def swap_string(self, string1, string2):
 
-def swap_strings(str1, str2):
-    print("The strings before swapping:", str1, str2)
-    str1 = str1 + str2
-    print(str1)
-    str2 = str1[0:len(str1) - len(str2)]
-    print(str2)
-    str1 = str1[len(str2):]
-    print(str1)
-    print("The strings after swapping:", str1, str2)
+        len1 = len(string1)  # Save original length = 6
+        len2 = len(string2)  # Save original length = 5
 
+        string1 = string1 + string2        # "KartikPatel"
+        string2 = string1[0:len1]          # "Kartik" ✅
+        string1 = string1[len1:]           # "Patel"  ✅
 
-str1 = "Kartik"
-str2 = "Patel"
-swap_strings(str1, str2)
+        return string1, string2
+
+obj = SwapStrings()
+print(obj.swap_string("Kartik", "Patel"))  # ('Patel', 'Kartik')

@@ -1,19 +1,26 @@
-def run_length_encoding(string):
+class FlakyTests:
 
-    count = 1
-    new_string = ""
+    def find_flaky_tests(self,test_results):
 
-    for i in range(0,len(string)-1):
-        if string[i] == string[i+1]:
-            count = count + 1
-            #new_string = new_string + string[i] + str(count)
-        else:
-            new_string = new_string + string[i] + str(count)
-            count = 1
+        result_map = {}
+        for test_id, status in test_results:
+            if test_id not in result_map:
+                result_map[test_id] = set()
+            result_map[test_id].add(status)
 
-    new_string = new_string + string[i + 1] + str(count)
-    return new_string
+        flaky_tests = []
+        for test_id, statutes in result_map.items():
+            if len(statutes) > 1:
+                flaky_tests.append(test_id)
 
-# Usage:
-# result = run_length_encoding("aabbccdaae")
-print(result)
+        return flaky_tests
+
+test_data = [
+    ('TC_101', 'Pass'),
+    ('TC_102', 'Fail'),
+    ('TC_103', 'Pass'),
+    ('TC_101', 'Fail')
+]
+obj = FlakyTests()
+output = obj.find_flaky_tests(test_data)
+print("The flaky tests are: ", output)
