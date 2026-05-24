@@ -1,26 +1,46 @@
-class FlakyTests:
+class ReverseWordsClass:
 
-    def find_flaky_tests(self,test_results):
+    def reverse_words(self, string):
 
-        result_map = {}
-        for test_id, status in test_results:
-            if test_id not in result_map:
-                result_map[test_id] = set()
-            result_map[test_id].add(status)
+        # Step 1: Split the string into words using '.'
+        words = string.split(".")
+        # Example:
+        # "i.like.this.program.very.much"
+        # becomes:
+        # ['i', 'like', 'this', 'program', 'very', 'much']
 
-        flaky_tests = []
-        for test_id, statutes in result_map.items():
-            if len(statutes) > 1:
-                flaky_tests.append(test_id)
+        # Step 2: Reverse the order of words
+        reversed_words = words[::-1]
+        # becomes:
+        # ['much', 'very', 'program', 'this', 'like', 'i']
 
-        return flaky_tests
+        # Step 3: Reverse each word individually
+        reversed_each_word = []
 
-test_data = [
-    ('TC_101', 'Pass'),
-    ('TC_102', 'Fail'),
-    ('TC_103', 'Pass'),
-    ('TC_101', 'Fail')
-]
-obj = FlakyTests()
-output = obj.find_flaky_tests(test_data)
-print("The flaky tests are: ", output)
+        for word in reversed_words:
+            reversed_word = word[::-1]
+            reversed_each_word.append(reversed_word)
+
+        # becomes:
+        # ['hcum', 'yrev', 'margorp', 'siht', 'ekil', 'i']
+
+        # Step 4: Join the reversed words using '.'
+        final_string = ".".join(reversed_each_word)
+
+        # Final output:
+        # "hcum.yrev.margorp.siht.ekil.i"
+
+        return final_string
+
+
+# Input string
+string = "i.like.this.program.very.much"
+
+# Create object
+obj = ReverseWordsClass()
+
+# Call method
+output = obj.reverse_words(string)
+
+# Print output
+print(output)
